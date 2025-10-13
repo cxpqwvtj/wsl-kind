@@ -16,6 +16,31 @@ exec 2>&1
 echo "=== setup-wsl.sh 実行開始 $(date) ==="
 echo "ログファイル: $LOG_FILE"
 
+# プロンプトにブランチを表示する
+if [ ! -f /usr/share/git/completion/git-prompt.sh ]; then
+    sudo mkdir -p /usr/share/git/completion
+    sudo curl -fsSL https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh -o /usr/share/git/completion/git-prompt.sh
+    if ! grep -q 'source /usr/share/git/completion/git-prompt.sh' ~/.bashrc; then
+        echo "Gitのプロンプト設定を.bashrcに追加します..."
+        {
+            echo ''
+            echo '# Gitのプロンプト設定'
+            echo 'if [ -f /usr/share/git/completion/git-prompt.sh ]; then'
+            echo '    source /usr/share/git/completion/git-prompt.sh'
+            echo '    export GIT_PS1_SHOWDIRTYSTATE=1'
+            echo '    export GIT_PS1_SHOWUNTRACKEDFILES=1'
+            echo '    export GIT_PS1_SHOWSTASHSTATE=1'
+            echo '    export GIT_PS1_SHOWUPSTREAM="auto"'
+            echo '    PS1="\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[31m\]\$(__git_ps1 \" (%s)\")\[\033[00m\]\\$ "'
+            echo 'fi'
+        } >> ~/.bashrc
+        echo "Gitのプロンプト設定を追加しました。"
+    else
+        echo "Gitのプロンプト設定は既に.bashrcに存在します。"
+    fi
+fi
+
+
 # Dockerがインストールされていない場合はインストール
 if ! command -v docker &> /dev/null; then
     echo "Dockerがインストールされていません。インストールを開始します..."
