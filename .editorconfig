@@ -8,6 +8,9 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.{sh}]
+indent_size = 4
+
 [*.{java,kt}]
 indent_size = 4
 end_of_line = lf
@@ -25,4 +28,6 @@ charset = utf-8-bom
 
 # FOR WINDOWS
 [*.{cmd,bat}]
+indent_size = 4
+charset = shift_jis
 end_of_line = crlf

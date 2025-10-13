@@ -294,3 +294,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,java,node,microsoftoffice,kotlin,visualstudiocode
+
+setup-wsl-git.*
+!setup-wsl-git*.example

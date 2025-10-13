@@ -1,0 +1,5 @@
+git config --global user.email "user@example.com"
+git config --global user.name "username"
+
+git config --global core.editor vim
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
