@@ -3,3 +3,8 @@ git config --global user.name "username"
 
 git config --global core.editor vim
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe"
+
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status

@@ -79,6 +79,16 @@ else
     echo "kubectlは既にインストールされています。"
 fi
 
+# helmがインストールされていない場合はインストール
+if ! command -v helm &> /dev/null; then
+    echo "helmがインストールされていません。インストールを開始します..."
+    # https://helm.sh/docs/intro/install/
+    curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+    echo "helmのインストールが完了しました。"
+else
+    echo "helmは既にインストールされています。"
+fi
+
 # kindのセットアップ
 if ! kind get clusters | grep kind 2>/dev/null; then
     echo "kind clusterのセットアップを開始します..."
