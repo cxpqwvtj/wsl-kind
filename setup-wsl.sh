@@ -80,7 +80,7 @@ else
 fi
 
 # kindのセットアップ
-if ! kind get clusters 2>/dev/null; then
+if ! kind get clusters | grep kind 2>/dev/null; then
     echo "kind clusterのセットアップを開始します..."
     kind create cluster --config=./kind-config.yaml
     echo "kind clusterのセットアップが完了しました。"
