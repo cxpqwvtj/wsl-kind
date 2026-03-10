@@ -22,6 +22,10 @@ git clone https://github.com/cxpqwvtj/wsl-kind.git
 ./setup-wsl-git.sh
 # WSLのセットアップ
 ./setup-wsl.sh
+# クラスターの作成のみ
+# kind create cluster --config=./kind-config.yaml
+# kubeconfigコピー
+cat ~/.kube/config | clip.exe
 ```
 
 ## その他のコマンド
